@@ -1,13 +1,29 @@
 mod user_choice;
 mod employee;
 
+pub enum Departments {
+    Business,
+    HR,
+    Development,
+    Support,
+    Management,
+    Installation,
+    Warehouse,
+}
+
+pub struct Employee {
+    name: String,
+    age: u8,
+    department: Departments
+}
+
 fn main() {
     use std::collections::HashMap;
     use std::io::stdin;
     use crate::user_choice::Choice;
     use crate::employee::{get_employees, add_employee};
     println!("Employee system");
-    let mut employees: HashMap<u32, String> = HashMap::new();
+    let mut employees: HashMap<u32, Employee> = HashMap::new();
     loop {
      
         println!("Enter choice for what you would like to do");
@@ -25,7 +41,7 @@ fn main() {
         match result {
             Choice::Exit => break,
             Choice::GetEmployees => get_employees(),
-            Choice::AddEmployees => add_employee(),
+            Choice::AddEmployees => add_employee(&employees),
             Choice::InValidInput => {
                 println!("Invalid input!");
                 continue;
