@@ -51,7 +51,7 @@ fn main() {
     loop {
         println!("Enter choice for what you would like to do");
         println!("1. Enter employee");
-        println!("2. Get all employees");
+        println!("2. Get employees");
         println!("0. Exit");
 
         let mut choice: String = String::new();
@@ -63,7 +63,7 @@ fn main() {
 
         match result {
             Choice::Exit => break,
-            Choice::GetEmployees => get_employees(),
+            Choice::GetEmployees => get_employees(&employees),
             Choice::AddEmployees => add_employee(&mut employees),
             Choice::InValidInput => {
                 println!("Invalid input!");
